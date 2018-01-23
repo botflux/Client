@@ -1,0 +1,6 @@
+E:\vmendele\DMX\Socket\Socket\bin\Debug\Socket.exe.config
+E:\vmendele\DMX\Socket\Socket\bin\Debug\Socket.exe
+E:\vmendele\DMX\Socket\Socket\bin\Debug\Socket.pdb
+E:\vmendele\DMX\Socket\Socket\obj\Debug\Socket.csprojResolveAssemblyReference.cache
+E:\vmendele\DMX\Socket\Socket\obj\Debug\Socket.exe
+E:\vmendele\DMX\Socket\Socket\obj\Debug\Socket.pdb
