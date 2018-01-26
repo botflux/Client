@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Socket
+namespace SocketLibrary
 {
     public class Client
     {
@@ -29,9 +29,14 @@ namespace Socket
             }
         }
 
-        public Client (IPAddress hostname, int port)
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe Client
+        /// </summary>
+        /// <param name="hostname">Adresse IP destinataire</param>
+        /// <param name="port">Port distant</param>
+        public Client (string hostname, int port)
         {
-            this.EndPoint = new IPEndPoint(hostname, port);
+            this.EndPoint = new IPEndPoint(IPAddress.Parse(hostname), port);
             this.udpClient = new UdpClient();
         }
 

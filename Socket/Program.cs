@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
-using Socket;
+using SocketLibrary;
 
-namespace Socket
+namespace SocketLibrary
 {
     class Program
     {
@@ -17,7 +17,7 @@ namespace Socket
             if (args.Length < 1)
                 throw new Exception("Aucun argument passé");
             
-            Client client = new Client(IPAddress.Parse(args[0]), int.Parse(args[1]));
+            Client client = new Client(args[0], int.Parse(args[1]));
 
             for (;;)
             {
