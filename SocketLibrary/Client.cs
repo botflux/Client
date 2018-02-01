@@ -41,6 +41,16 @@ namespace VPackage.Network
         }
 
         /// <summary>
+        /// Initiliase une nouvelle instance de la classe Client
+        /// </summary>
+        /// <param name="wrapper">Wrapper</param>
+        public Client (ClientWrapper wrapper)
+        {
+            this.EndPoint = wrapper.ToIPEndPoint();
+            this.udpClient = new UdpClient();
+        }
+
+        /// <summary>
         /// Envoie un message sur le réseau à l'adresse et port spécifiés dans EndPoint
         /// </summary>
         /// <param name="message">Message à envoyer</param>
