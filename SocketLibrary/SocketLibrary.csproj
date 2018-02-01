@@ -7,7 +7,7 @@
     <ProjectGuid>{87E52E26-8F15-4C43-9FA9-7D1269648C0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SocketLibrary</RootNamespace>
+    <RootNamespace>VPackage.Network</RootNamespace>
     <AssemblyName>SocketLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

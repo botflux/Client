@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
-using SocketLibrary;
+using VPackage.Network;
 
 namespace SocketLibrary
 {
