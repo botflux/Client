@@ -14,10 +14,9 @@ namespace SocketLibrary
     {
         static void Main(string[] args)
         {
-            if (args.Length < 1)
-                throw new Exception("Aucun argument passé");
             
-            Client client = new Client(args[0], int.Parse(args[1]));
+
+            Client client = new Client("10.129.21.245", 5000);
 
             for (;;)
             {

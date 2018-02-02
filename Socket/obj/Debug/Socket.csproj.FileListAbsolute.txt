@@ -7,3 +7,5 @@ E:\vmendele\DMX\Socket\Socket\obj\Debug\Socket.pdb
 C:\Users\Victor\Documents\Visual Studio 2015\Projects\Client\Socket\obj\Debug\Socket.csprojResolveAssemblyReference.cache
 C:\Users\Victor\Documents\Visual Studio 2015\Projects\Client\Socket\obj\Debug\Socket.exe
 C:\Users\Victor\Documents\Visual Studio 2015\Projects\Client\Socket\obj\Debug\Socket.pdb
+E:\vmendele\DMX\Socket\Socket\bin\Debug\SocketLibrary.dll
+E:\vmendele\DMX\Socket\Socket\bin\Debug\SocketLibrary.pdb
