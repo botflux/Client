@@ -34,12 +34,30 @@ namespace VPackage.Network
         }
 
         /// <summary>
+        /// Initialise une nouvelle instance de ClientWrapper
+        /// </summary>
+        /// <param name="hostname">Hôte distant</param>
+        /// <param name="port">Port distant</param>
+        public ClientWrapper (string hostname = "", string port = "")
+        {
+            Hostname = hostname;
+            Port = port;
+        }
+
+        /// <summary>
         /// Retourne cette classe sous forme de IPEndPoint
         /// </summary>
         /// <returns></returns>
         public IPEndPoint ToIPEndPoint ()
         {
-            return new IPEndPoint(IPAddress.Parse(this.hostname), int.Parse(this.port));
+            try
+            {
+                return new IPEndPoint(IPAddress.Parse(this.hostname), int.Parse(this.port));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
