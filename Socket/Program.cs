@@ -14,16 +14,24 @@ namespace SocketLibrary
     {
         static void Main(string[] args)
         {
+            Client client = new Client("10.129.21.245", 5000);
+            Server server = new Server(15000);
+            server.OnMessageReceived += ((message) => 
+            {
+                Console.WriteLine(message);
+            });
+
+            server.StartListen();
+            
             
 
-            Client client = new Client("10.129.21.245", 5000);
-
-            for (;;)
+            while (Console.ReadKey().Key != ConsoleKey.S)
             {
                 Console.WriteLine("Entrer un message a envoyer:");
                 string message = Console.ReadLine();
                 client.Send(message);
             }
+            server.StopListen();
         }
     }
 }
