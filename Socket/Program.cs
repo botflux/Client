@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
 using VPackage.Network;
+using System.Threading;
 
 namespace SocketLibrary
 {
@@ -14,6 +15,7 @@ namespace SocketLibrary
     {
         static void Main(string[] args)
         {
+            /*
             Client client = new Client("10.129.21.245", 5000);
             Server server = new Server(15000);
             server.OnMessageReceived += ((message) => 
@@ -31,7 +33,7 @@ namespace SocketLibrary
                 string message = Console.ReadLine();
                 client.Send(message);
             }
-            server.StopListen();
+            server.StopListen();*/
         }
     }
 }
