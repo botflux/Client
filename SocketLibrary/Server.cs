@@ -24,6 +24,7 @@ namespace VPackage.Network
             udpClient = new UdpClient(listenPort);
             endPoint = new IPEndPoint(IPAddress.Any, listenPort);
             _listenTh = new Thread(new ThreadStart(Listen));
+            
         }
 
         private void Listen ()
@@ -56,6 +57,7 @@ namespace VPackage.Network
         public void StopListen()
         {
             finished = true;
+            _listenTh.Abort();
         }
     }
 }
