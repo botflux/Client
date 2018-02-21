@@ -15,49 +15,35 @@ namespace VPackage.Network
 
         private UdpClient udpClient;
         private IPEndPoint endPoint;
-        private bool finished = false;
-
-        private Thread _listenTh;
 
         public Server (int listenPort)
         {
             udpClient = new UdpClient(listenPort);
             endPoint = new IPEndPoint(IPAddress.Any, listenPort);
-            _listenTh = new Thread(new ThreadStart(Listen));
-            
-        }
-
-        private void Listen ()
-        {
-            try
-            {
-
-                while (!finished)
-                {
-                    byte[] bytes = udpClient.Receive(ref endPoint);
-                    if (OnMessageReceived != null) OnMessageReceived(Encoding.ASCII.GetString(bytes));
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                udpClient.Close();
-            }
         }
 
         public void StartListen ()
         {
-            finished = false;
-            _listenTh.Start();
+            UdpState s = new UdpState();
+
+            s.E = endPoint;
+            s.U = udpClient;
+            
+            udpClient.BeginReceive(new AsyncCallback(ReceiveCallBack), s);
         }
 
-        public void StopListen()
+        private void ReceiveCallBack(IAsyncResult ar)
         {
-            finished = true;
-            _listenTh.Abort();
+            UdpClient u = (UdpClient)((UdpState)(ar.AsyncState)).U;
+            IPEndPoint e = (IPEndPoint)((UdpState)(ar.AsyncState)).E;
+
+            byte[] receiveBytes = u.EndReceive(ar, ref e);
+            string receiveString = Encoding.ASCII.GetString(receiveBytes);
+
+            if (OnMessageReceived != null) OnMessageReceived(receiveString);
+            
+            StartListen();
+
         }
     }
 }

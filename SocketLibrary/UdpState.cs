@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace SocketLibrary
+namespace VPackage.Network
 {
     public class UdpState
     {

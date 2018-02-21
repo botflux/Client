@@ -13,45 +13,25 @@ namespace SocketLibrary
 {
     class Program
     {
-        private static bool messageReceived = false;
-
-        public static void ReceiveCallBack (IAsyncResult ar)
-        {
-            UdpClient u = (UdpClient)((UdpState)(ar.AsyncState)).U;
-            IPEndPoint e = (IPEndPoint)((UdpState)(ar.AsyncState)).E;
-
-            byte[] receiveBytes = u.EndReceive(ar, ref e);
-            string receiveString = Encoding.ASCII.GetString(receiveBytes);
-
-            Console.WriteLine("Received: {0}", receiveString);
-            messageReceived = true;
-        }
 
         static void Main(string[] args)
         {
-
-            IPEndPoint e = new IPEndPoint(IPAddress.Any, 15200);
-            UdpClient u = new UdpClient(e);
-
-            UdpState s = new SocketLibrary.UdpState();
-
-            s.E = e;
-            s.U = u;
-
-            Console.WriteLine("listening for messages");
-
-            u.BeginReceive(new AsyncCallback(ReceiveCallBack), s);
-            /*
-            while (!messageReceived)
+            Server server = new Server(15200);
+            server.OnMessageReceived += (message) =>
             {
-                Thread.Sleep(100);
-            }*/
+                Console.WriteLine("Received: {0}", message);
+            };
 
+            server.StartListen();
             Client client = new Client("127.0.0.1", 15200);
-            client.Send("Hello world");
 
-            Console.ReadKey();
+            while (Console.ReadKey().Key != ConsoleKey.S)
+            {
+                Console.WriteLine("Entrer un message: ");                
+                client.Send(Console.ReadLine());
+            }
 
+            
             /*
             Client client = new Client("10.129.21.245", 5000);
             Server server = new Server(15000);
