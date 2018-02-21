@@ -16,17 +16,30 @@ namespace VPackage.Network
         private UdpClient udpClient;
         private IPEndPoint endPoint;
 
+        public IPEndPoint EndPoint
+        {
+            get
+            {
+                return endPoint;
+            }
+
+            set
+            {
+                endPoint = value;
+            }
+        }
+
         public Server (int listenPort)
         {
             udpClient = new UdpClient(listenPort);
-            endPoint = new IPEndPoint(IPAddress.Any, listenPort);
+            EndPoint = new IPEndPoint(IPAddress.Any, listenPort);
         }
 
         public void StartListen ()
         {
             UdpState s = new UdpState();
 
-            s.E = endPoint;
+            s.E = EndPoint;
             s.U = udpClient;
             
             udpClient.BeginReceive(new AsyncCallback(ReceiveCallBack), s);
